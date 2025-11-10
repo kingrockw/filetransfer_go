@@ -1,0 +1,21 @@
+[Unit]
+Description=WebRTC Signaling Server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/filetransfer_go
+ExecStart=/opt/filetransfer_go/signaling-server-linux
+ExecStop=/bin/kill -SIGTERM $MAINPID
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# 环境变量（可选）
+# Environment="PORT=37851"
+
+[Install]
+WantedBy=multi-user.target
+
